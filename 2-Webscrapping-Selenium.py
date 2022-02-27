@@ -1,12 +1,14 @@
 '''
-Lets now fill up some forms.
+- Lets now fill up some forms.(including clicking)
+- dismiss some popups etc
+we will log into heroku
 
 '''
 from selenium import webdriver
 from selenium.webdriver.common.keys  import Keys #--> we need this if we need to have keystrokes like clicking buttons etc
 
 driver = webdriver.Chrome() 
-driver.implicitly_wait(10) # --> This gives 10 seconds before we confirm the page is loaded. helps while clicking accept all cookies.
+driver.implicitly_wait(10) # --> This gives 10 seconds before we confirm the page is loaded. helps while clicking accept all cookies. always use it.
 
 url = 'https://dashboard.heroku.com/apps'
 
@@ -46,3 +48,7 @@ driver.find_element_by_xpath('//*[@id="login"]/form/button').click()
 driver.find_element_by_xpath('//*[@id="mfa-later"]/button').click()
 
 #We are now on Heroku dashboard successfully!!!
+
+
+#It is always good to close the browser once you are done.
+driver.quit()
