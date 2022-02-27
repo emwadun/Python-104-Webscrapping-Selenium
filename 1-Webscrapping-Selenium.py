@@ -11,6 +11,6 @@ driver = webdriver.Chrome()
 # When we run this python file now chrome is launched. with message "Chrome is being controlled by automated test software"
 # That is nice!!! out setup of Selenium and webdriver is OK.
 
-url = 'https://www.google.ie'
+url = 'http://google.ie'
 
 driver.get(url) #--> This open google page 

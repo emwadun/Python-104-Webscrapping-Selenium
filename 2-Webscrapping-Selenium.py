@@ -44,3 +44,5 @@ driver.find_element_by_xpath('//*[@id="login"]/form/button').click()
 
 
 driver.find_element_by_xpath('//*[@id="mfa-later"]/button').click()
+
+#We are now on Heroku dashboard successfully!!!
