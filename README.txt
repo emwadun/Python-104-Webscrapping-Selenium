@@ -41,7 +41,7 @@ Ref:
 - https://www.selenium.dev/documentation/
 
 - Web Scraping Instagram with Selenium Python | by Arry M. Lani Anhar | Analytics Vidhya | Medium
-https://mail.google.com/mail/u/0/#inbox/KtbxLvHcKrRLDlJZDmDhkjbjVtcgdHMCbB
+https://medium.com/analytics-vidhya/web-scraping-instagram-with-selenium-python-b8e77af32ad4
 
 - 4 Web Scraping Projects That Will Help Automate Your Life
 https://medium.com/geekculture/4-web-scraping-projects-that-will-help-automate-your-life-6c6d43aefeb5

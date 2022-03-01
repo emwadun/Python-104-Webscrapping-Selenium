@@ -5,7 +5,7 @@ Now since selenium has been installed and webdriver has been installed lets test
 
 from selenium import webdriver
 
-
+ 
 #linux default path /usr/local/bin you can specify the path in chrome() if it is not located automatically.
 driver = webdriver.Chrome() 
 
@@ -14,4 +14,4 @@ driver = webdriver.Chrome()
 
 url = 'http://google.ie'
 
-driver.get(url) #--> This open google page 
+driver.get(url) #--> This open google page . Awesome!!!
