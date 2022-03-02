@@ -1,7 +1,8 @@
 '''
-- Lets log into instagram
-- scroll down the window
-- & download photos from arteta's instagram
+- Let's log into instagram automatically
+- Search Mikel artetas instagram account
+- Download the posts or photos.
+- Close the browser
 '''
 
 from selenium import webdriver
@@ -9,6 +10,7 @@ from selenium.webdriver.common.keys  import Keys
 import time
 import os
 import wget
+import requests
 
 
 driver = webdriver.Chrome()
@@ -50,6 +52,19 @@ driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/d
 driver.implicitly_wait(5)
 driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/div[3]/div/div[2]/div/div[1]/a/div').click()
 
+
+#lets download the first image / post. This will save in a list.
+images = driver.find_elements_by_class_name("_bz0w")
+
+images_href = []
+for img in images:
+    href = img.find_element_by_tag_name("a").get_attribute("href")
+    images_href.append(href)
+
+print(images_href)
+
+
+
 #Lets scroll down the page -- WORKING
 #scrolldown = driver.execute_script(
 #    "window.scrollTo(0, document.body.scrollHeight);var scrolldown=document.body.scrollHeight;return scrolldown;")
@@ -63,10 +78,10 @@ driver.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/d
 #        match = True
 
 #Lets scroll down 3 times
-n_scrolls = 3
-for j in range(0, n_scrolls):
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(5)
+#n_scrolls = 3
+#for j in range(0, n_scrolls):
+#    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+#    time.sleep(5)
 
 #lets get the links for the posts/images - WORKING
 #posts = []
@@ -79,38 +94,20 @@ for j in range(0, n_scrolls):
 #print(posts)
 
 
-#target all the link elements on the page
-anchors = driver.find_elements_by_tag_name('a')
-anchors = [a.get_attribute('href') for a in anchors]
-#narrow down all links to image links only
-anchors = [a for a in anchors if str(a).startswith("https://www.instagram.com/p/")]
-
-print('Found ' + str(len(anchors)) + ' links to images')
-anchors[:5]
-
-#Lets get the links of the images so that we can download them
-images = []
-
-#follow each image link and extract only image at index=1
-for a in anchors:
-    driver.get(a)
-    time.sleep(5)
-    img = driver.find_elements_by_tag_name('img')
-    img = [i.get_attribute('src') for i in img]
-    images.append(img[1])
-
-
 #Lets save images to our computer, we need to create a directory
 keyword = 'Arteta'
 path = os.getcwd()
 path = os.path.join(path, keyword + "_pics")
 
-os.mkdir(path)
-print(path)
+#os.mkdir(path)
+#print(path)
 
 #download images
 counter = 0
-for image in images:
+for image in images_href:
     save_as = os.path.join(path, keyword + str(counter) + '.jpg')
     wget.download(image, save_as)
     counter += 1
+
+driver.implicitly_wait(20)
+driver.close()
